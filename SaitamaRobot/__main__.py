@@ -72,8 +72,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hey hi {}, I'm {}!
-I am a RoBot.
-Move to other bots, 
+Im group management bot to assist your community!
 """
 
 HELP_STRINGS = """
@@ -96,7 +95,7 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-SAITAMA_IMG = "https://telegra.ph/file/6bd8761ac2a16c7477900.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/e2f333d23d84383d601dd.jpg"
 
 
 IMPORTED = {}
@@ -214,7 +213,7 @@ def start(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="☑️ Add me",
+                                text="☑️ Add me tp your group",
                                 url="t.me/{}?startgroup=true".format(
                                     context.bot.username,
                                 ),
@@ -223,17 +222,17 @@ def start(update: Update, context: CallbackContext):
                         [
                             InlineKeyboardButton(
                                 text="🚑 Support",
-                                url=f"https://t.me/dragoninuofficialgroup",
+                                url=f"https://t.me/doragonland",
                             ),
                             InlineKeyboardButton(
                                 text="🔔 Updates",
-                                url="https://t.me/dragoninuofficialchannel",
+                                url="https://t.me/doragonland",
                             ),
                         ],
                         [
                             InlineKeyboardButton(
                                 text="Code Credit",
-                                url="https://t.me/Its_Pranav_Xd",
+                                url="https://t.me/wancoins",
                             ),
                             InlineKeyboardButton(
                                 text="Hosted On",
@@ -242,7 +241,7 @@ def start(update: Update, context: CallbackContext):
                         ],
                         [
                             InlineKeyboardButton(
-                                text="Coded on",
+                                text="repo link",
                                 url="https://github.com",
                             ),
                         ],
