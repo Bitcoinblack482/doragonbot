@@ -28,10 +28,10 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 ENV = bool(os.environ.get("ENV", False))
 
 if ENV:
-    TOKEN = os.environ.get("TOKEN", "5135204652:AAE0x_RzFyfQYVlMIOlvz_YIkZ6CQqrz6Nc")
+    TOKEN = os.environ.get("TOKEN", "5210931684:AAHKPkM3RBA7bKzsvZ3BbOf2yVaRXgo3My8")
 
     try:
-        OWNER_ID = int(os.environ.get("OWNER_ID", 1511373882))
+        OWNER_ID = int(os.environ.get("OWNER_ID",  163494588))
     except ValueError:
         raise Exception("Your OWNER_ID env variable is not a valid integer.")
 
@@ -65,8 +65,8 @@ if ENV:
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
-    API_ID = os.environ.get("API_ID", 18564918)
-    API_HASH = os.environ.get("API_HASH", "fd99995bc013e54c3649fb563d1d18b9")
+    API_ID = os.environ.get("API_ID", 1661321)
+    API_HASH = os.environ.get("API_HASH", "24aa5064745f347840be9a533ed70f26")
     DB_URI = os.environ.get("DATABASE_URL")
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
