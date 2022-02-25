@@ -11,6 +11,7 @@ future
 geopy
 git+https://github.com/starry69/python-markdown2.git
 #googletrans
+googletrans==3.1.0a0
 google_trans_new
 humanize
 jikanpy
