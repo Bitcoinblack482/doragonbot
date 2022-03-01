@@ -49,12 +49,20 @@ def ticket2(update , context):
 def ticket3(update , context):
     cd = context.chat_data
     query = update.callback_query
-    fromid = cd['fromid']
     print('enter phase3')
-    answer = update.message.reply_text
+    cd['ans'] = answer = update.message.reply_text
+    return ticket4(update , context)
+    
+def ticket4(update , context):
+    cd = context.chat_data
+    query = update.callback_query
+    fromid = cd['fromid']
+    print('enter phase4')
+    answer = cd['ans']
     id = cd['id']
     context.bot.send_message(chat_id =fromid, text = answer)
     ConversationHandler.END
+    
     
 ticket_handler = ConversationHandler(
     entry_points=[CommandHandler('ticket', ticket)],
