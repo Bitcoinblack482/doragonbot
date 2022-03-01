@@ -26,7 +26,7 @@ def ticket(update, context):
     query = update.callback_query
     user = update.effective_user.name
     cd['id'] = update.effective_user.id
-    context.bot.send_message(chat_id = effective_chat.id, text = "<b>Please send your questions or inquiry in the next message</b>\n\n<i>Admins will get back to you very soon</i>", parse_mode = ParseMode.HTML)
+    context.bot.send_message(chat_id = update.effective_chat.id, text = "<b>Please send your questions or inquiry in the next message</b>\n\n<i>Admins will get back to you very soon</i>", parse_mode = ParseMode.HTML)
     return TWO
   
 def ticket2(update , context):
