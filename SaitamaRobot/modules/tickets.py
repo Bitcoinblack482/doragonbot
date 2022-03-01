@@ -24,6 +24,10 @@ ONE , TWO , THREE, FOUR , FIVE, *_ = range(1000)
 def ticket(update, context):
     cd = context.chat_data
     query = update.callback_query
+    Chat = update.effective_chat
+    if update.effective.chat.type !=Chat.PRIVATE:
+        update.message.reply_text('use this command in PM/DM')
+        return -1
     print('enter phase1 ')
     user = update.effective_user.name
     cd['id'] = update.effective_user.id
