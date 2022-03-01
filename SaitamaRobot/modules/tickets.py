@@ -25,7 +25,7 @@ def ticket(update, context):
     cd = context.chat_data
     query = update.callback_query
     Chat = update.effective_chat
-    if update.effective.chat.type !=Chat.PRIVATE:
+    if update.effective_chat.type !=Chat.PRIVATE:
         update.message.reply_text('use this command in PM/DM')
         return -1
     print('enter phase1 ')
