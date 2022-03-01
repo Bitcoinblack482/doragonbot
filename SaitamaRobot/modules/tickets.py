@@ -9,6 +9,14 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ParseMo
 from telegram.ext import Updater, CallbackQueryHandler, CallbackContext
 import random
 import time
+from telegram.ext import (
+    Updater,
+    CommandHandler,
+    MessageHandler,
+    Filters,
+    ConversationHandler,
+    CallbackContext,
+)
 
 
 ONE , TWO , THREE, FOUR , FIVE, *_ = range(1000)
