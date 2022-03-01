@@ -63,11 +63,8 @@ ticket_handler = ConversationHandler(
             [
                 CallbackQueryHandler(ticket3, pattern=".")
             ],'''
-        TWO:
-            [
-                MessageHandler(Filters.text, ticket2)
-            ]
-      
+           TWO:
+            [MessageHandler(Filters.text, ticket2)]
     },
     fallbacks=[]
 )
