@@ -49,11 +49,11 @@ ticket_handler = ConversationHandler(
     states={
         ONE:
             [
-                CallbackQueryHandler(ticket2, pattern=".")
+                CallbackQueryHandler(ticket3, pattern=".")
             ],
         TWO:
             [
-                MessageHandler(Filters.text, ticket)
+                MessageHandler(Filters.text, ticket2)
             ]
       
     },
