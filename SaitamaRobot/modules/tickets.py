@@ -24,21 +24,26 @@ ONE , TWO , THREE, FOUR , FIVE, *_ = range(1000)
 def ticket(update, context):
     cd = context.chat_data
     query = update.callback_query
+    print('enter phase1 ')
     user = update.effective_user.name
     cd['id'] = update.effective_user.id
     context.bot.send_message(chat_id = update.effective_chat.id, text = "<b>Please send your questions or inquiry in the next message</b>\n\n<i>Admins will get back to you very soon</i>", parse_mode = ParseMode.HTML)
+    print('phase1 done')
     return TWO
   
 def ticket2(update , context):
     query = update.callback_query
     cd = context.chat_data
+    print('enter phase2 ')
     inquiry = update.message.text
     context.bot.forward_message(chat_id = -753748989  , text = inquiry)
+    print('phase2 done')
     return ONE
   
 def ticket3(update , context):
     cd = context.chat_data
     query = update.callback_query
+    print('enter phase3')
     answer = update.message.reply_text
     id = cd['id']
     context.bot.send_message(chat_id = id, text = answer)
