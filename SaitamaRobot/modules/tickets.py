@@ -38,28 +38,31 @@ def ticket(update, context):
 def ticket2(update , context):
     query = update.callback_query
     cd = context.chat_data
-    print('enter phase2 ')
+    print('enter phase2')
     inquiry = update.message.text
-    context.bot.forward_message(chat_id = -753748989,from_chat_id=update.effective_chat.id,message_id=update.effective_message.message_id)
+    cd['msgid'] = msgid = update.effective_message.message_id
+    cd['fromid'] = fromid = update.effective_chat.id
+    context.bot.forward_message(chat_id = -753748989,from_chat_id=fromid,message_id=msgid)
     print('phase2 done')
-    return ONE
+    return ticket3(update , context)
   
 def ticket3(update , context):
     cd = context.chat_data
     query = update.callback_query
+    fromid = cd['fromid']
     print('enter phase3')
     answer = update.message.reply_text
     id = cd['id']
-    context.bot.send_message(chat_id = id, text = answer)
+    context.bot.send_message(chat_id =fromid, text = answer)
     ConversationHandler.END
     
 ticket_handler = ConversationHandler(
     entry_points=[CommandHandler('ticket', ticket)],
     states={
-        ONE:
+       ''' ONE:
             [
                 CallbackQueryHandler(ticket3, pattern=".")
-            ],
+            ],'''
         TWO:
             [
                 MessageHandler(Filters.text, ticket2)
