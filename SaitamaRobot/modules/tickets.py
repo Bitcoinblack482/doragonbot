@@ -40,7 +40,7 @@ def ticket2(update , context):
     cd = context.chat_data
     print('enter phase2 ')
     inquiry = update.message.text
-    context.bot.forward_message(chat_id = -753748989  , text = inquiry)
+    context.bot.forward_message(chat_id = -753748989)
     print('phase2 done')
     return ONE
   
