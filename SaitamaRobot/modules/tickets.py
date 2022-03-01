@@ -59,10 +59,6 @@ def ticket3(update , context):
 ticket_handler = ConversationHandler(
     entry_points=[CommandHandler('ticket', ticket)],
     states={
-       ''' ONE:
-            [
-                CallbackQueryHandler(ticket3, pattern=".")
-            ],'''
            TWO:
             [MessageHandler(Filters.text, ticket2)]
     },
