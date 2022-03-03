@@ -65,9 +65,15 @@ def ticket3(update, context):
     print('enter phase3')
     a =  update.message.text
     b = update.effective_user.first_name
+    try:
+       id = update.message.reply_to_message.forward_from.id
+
+    except AttributeError:
+        context.bot.send_message(chat_id = update.effective_chat.id, text = 'this user has forward privacy turned on, unable to track user')
+        return -1
     if isreply(update.message):
         if update.message.reply_to_message.from_user.id == BOTID:
-           context.bot.send_message(chat_id = update.message.reply_to_message.forward_from.id, text = f"{a}\n\n<i>Answered by :</i> {b}", parse_mode = ParseMode.HTML)
+           context.bot.send_message(chat_id = id, text = f"{a}\n\n<i>Answered by :</i> {b}", parse_mode = ParseMode.HTML)
 
 
 ticket_handler = ConversationHandler(
