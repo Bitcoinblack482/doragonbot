@@ -21,57 +21,64 @@ from telegram.ext import (
 
 ONE , TWO , THREE, FOUR , FIVE, *_ = range(1000)
 
+BOTID = 1338281900
 def ticket(update, context):
-    cd = context.chat_data
+    cd = context.bot_data
     query = update.callback_query
     Chat = update.effective_chat
-    if update.effective_chat.type !=Chat.PRIVATE:
+    if update.effective_chat.type != Chat.PRIVATE:
         update.message.reply_text('use this command in PM/DM')
         return -1
     print('enter phase1 ')
     user = update.effective_user.name
     cd['id'] = update.effective_user.id
-    context.bot.send_message(chat_id = update.effective_chat.id, text = "<b>Please send your questions or inquiry in the next message</b>\n\n<i>Admins will get back to you very soon</i>", parse_mode = ParseMode.HTML)
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="<b>Please send your questions or inquiry in the next message</b>\n\n<i>Admins will get back to you very soon</i>",
+                             parse_mode=ParseMode.HTML)
     print('phase1 done')
-    return TWO
-  
-def ticket2(update , context):
+    return 0
+
+
+def ticket2(update, context):
+    cd = context.bot_data
     query = update.callback_query
+    Chat = update.effective_chat
+    if update.effective_chat.type != Chat.PRIVATE:
+        return -1
     cd = context.chat_data
     print('enter phase2')
-    inquiry = update.message.text
     cd['msgid'] = msgid = update.effective_message.message_id
     cd['fromid'] = fromid = update.effective_chat.id
-    context.bot.forward_message(chat_id = -753748989,from_chat_id=fromid,message_id=msgid)
+    print(fromid)
+    #context.bot.forward_message(chat_id=-1001507825630, from_chat_id=fromid, message_id=msgid)
+    context.bot.forward_message(chat_id=-753748989, from_chat_id=fromid, message_id=msgid)
     print('phase2 done')
-    return ticket3(update , context)
-  
-def ticket3(update , context):
-    cd = context.chat_data
+    #context.bot.send_message(chat_id=)
+    return 1
+
+def isreply(msg):
+  return msg.reply_to_message is not None
+
+def ticket3(update, context):
+    cd = context.bot_data
     query = update.callback_query
     print('enter phase3')
-    cd['ans'] = answer = update.message.reply_text
-    return ticket4(update , context)
-    
-def ticket4(update , context):
-    cd = context.chat_data
-    query = update.callback_query
-    fromid = cd['fromid']
-    print('enter phase4')
-    answer = cd['ans']
-    id = cd['id']
-    context.bot.send_message(chat_id =fromid, text = answer)
-    ConversationHandler.END
-    
-    
+    a =  update.message.text
+    b = update.effective_user.first_name
+    if isreply(update.message):
+        if update.message.reply_to_message.from_user.id == BOTID:
+           context.bot.send_message(chat_id = update.message.reply_to_message.forward_from.id, text = f"{a}\n\n<i>Answered by :</i> {b}", parse_mode = ParseMode.HTML)
+
+
 ticket_handler = ConversationHandler(
-    entry_points=[CommandHandler('ticket', ticket)],
-    states={
-           TWO:
-            [MessageHandler(Filters.text, ticket2)]
+    entry_points = [CommandHandler("ticket", ticket)],
+    states = {
+        0: [MessageHandler(Filters.text, ticket2)],
+        1:[MessageHandler(Filters.text,ticket3)]
     },
-    fallbacks=[]
+
+    fallbacks = [],
+    allow_reentry = True,
+    per_chat=False
 )
-
-
 dispatcher.add_handler(ticket_handler)
