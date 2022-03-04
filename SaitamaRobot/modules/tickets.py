@@ -58,9 +58,9 @@ def reply(update, context):
     except AttributeError:
         context.bot.send_message(chat_id = update.effective_chat.id, text = 'this user has forward privacy turned on, unable to track user')
         return -1
-    if update.message.reply_to_message.from_user.id == BOTID:
-     context.bot.send_message(chat_id = id , text = f"{c}\n\n<i>Answered by :</i> {b}", parse_mode = ParseMode.HTML)
-     return -1
+    if isreply(update.message):
+           context.bot.send_message(chat_id = id , text = f"{c}\n\n<i>Answered by :</i> {b}", parse_mode = ParseMode.HTML)
+           return -1
     print('phase3 ends')
 
 
