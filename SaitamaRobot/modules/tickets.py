@@ -53,12 +53,16 @@ def reply(update, context):
     a = update.message.text.split()[1:]
     c= " ".join(a)
     b = update.effective_user.first_name
+    print('enter reply')
+    print(update.effective_chat.id)
     if update.effective_chat.id != maingroup:
+        print('not group')
         return None
     try:
         id = update.message.reply_to_message.forward_from.id
         print(id)
     except AttributeError:
+        print('error')
         context.bot.send_message(chat_id = update.effective_chat.id, text = 'this user has forward privacy turned on, unable to track user')
         return -1
     if isreply(update.message):
