@@ -8,9 +8,8 @@ from telegram.ext import (
     CallbackContext,
 )
 
-from telegram.ext import Updater
-updater = Updater(token='5210931684:AAHKPkM3RBA7bKzsvZ3BbOf2yVaRXgo3My8', use_context=True)
-dispatcher = updater.dispatcher
+from SaitamaRobot import dispatcher
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update, Message
 
 ONE , TWO , THREE, FOUR , FIVE, *_ = range(1000)
 
