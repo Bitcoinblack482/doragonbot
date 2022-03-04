@@ -1,4 +1,5 @@
-
+updater = Updater(token='1338281900:AAERPwsHoJdy52GBdy1saIQ2lEr0NJF76yI', use_context=True)
+dispatcher = updater.dispatcher
 from telegram.ext import (
     Updater,
     CommandHandler,
