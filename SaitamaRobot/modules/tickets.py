@@ -1,5 +1,4 @@
-updater = Updater(token='1338281900:AAERPwsHoJdy52GBdy1saIQ2lEr0NJF76yI', use_context=True)
-dispatcher = updater.dispatcher
+
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -9,6 +8,9 @@ from telegram.ext import (
     CallbackContext,
 )
 
+from telegram.ext import Updater
+updater = Updater(token='1338281900:AAERPwsHoJdy52GBdy1saIQ2lEr0NJF76yI', use_context=True)
+dispatcher = updater.dispatcher
 
 ONE , TWO , THREE, FOUR , FIVE, *_ = range(1000)
 
