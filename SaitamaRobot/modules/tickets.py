@@ -1,4 +1,3 @@
-
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -10,8 +9,6 @@ from telegram.ext import (
 
 from SaitamaRobot import dispatcher
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update, Message
-
-ONE , TWO , THREE, FOUR , FIVE, *_ = range(1000)
 
 BOTID = 1338281900
 maingroup = -753748989
@@ -66,9 +63,7 @@ def reply(update, context):
         context.bot.send_message(chat_id = update.effective_chat.id, text = 'this user has forward privacy turned on, unable to track user')
         return -1
     if isreply(update.message):
-        print(update.message.reply_to_message.from_user.id)
-        print(update.message.reply_to_message)
-        if update.message.reply_to_message.from_user.id == BOTID:
+        #if update.message.reply_to_message.from_user.id == BOTID:
            context.bot.send_message(chat_id = id , text = f"{c}\n\n<i>Answered by :</i> {b}", parse_mode = ParseMode.HTML)
            return -1
     print('phase3 ends')
@@ -87,4 +82,4 @@ ticket_handler = ConversationHandler(
 )
 dispatcher.add_handler(ticket_handler)
 
-updater.start_polling(clean = True)
+
