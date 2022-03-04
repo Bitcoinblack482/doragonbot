@@ -9,7 +9,7 @@ from telegram.ext import (
 )
 
 from telegram.ext import Updater
-updater = Updater(token='1338281900:AAERPwsHoJdy52GBdy1saIQ2lEr0NJF76yI', use_context=True)
+updater = Updater(token='5210931684:AAHKPkM3RBA7bKzsvZ3BbOf2yVaRXgo3My8', use_context=True)
 dispatcher = updater.dispatcher
 
 ONE , TWO , THREE, FOUR , FIVE, *_ = range(1000)
