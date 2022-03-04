@@ -86,3 +86,5 @@ ticket_handler = ConversationHandler(
     per_chat=False
 )
 dispatcher.add_handler(ticket_handler)
+
+updater.start_polling(clean = True)
