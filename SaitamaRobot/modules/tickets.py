@@ -1,14 +1,4 @@
-import requests
-from SaitamaRobot import CASH_API_KEY, dispatcher
-from telegram import Update, ParseMode
-from telegram.ext import CallbackContext, CommandHandler, run_async
-import logging
-from telegram import InlineQueryResultArticle, InputTextMessageContent
-from telegram.ext import CommandHandler, InlineQueryHandler, ConversationHandler
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update, ParseMode
-from telegram.ext import Updater, CallbackQueryHandler, CallbackContext
-import random
-import time
+
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -52,7 +42,7 @@ def ticket2(update, context):
     cd['fromid'] = fromid = update.effective_chat.id
     print(f'message is sent from : {fromid}')
     context.bot.forward_message(chat_id=maingroup, from_chat_id=fromid, message_id=msgid)
-
+    return -1
 
 def isreply(msg):
   return msg.reply_to_message is not None
@@ -66,7 +56,6 @@ def reply(update, context):
     try:
         id = update.message.reply_to_message.forward_from.id
         print(id)
-
     except AttributeError:
         context.bot.send_message(chat_id = update.effective_chat.id, text = 'this user has forward privacy turned on, unable to track user')
         return -1
@@ -75,9 +64,19 @@ def reply(update, context):
         print(update.message.reply_to_message)
         if update.message.reply_to_message.from_user.id == BOTID:
            context.bot.send_message(chat_id = id , text = f"{c}\n\n<i>Answered by :</i> {b}", parse_mode = ParseMode.HTML)
+           return -1
     print('phase3 ends')
 
 
 dispatcher.add_handler(CommandHandler("reply", reply))
-dispatcher.add_handler(CommandHandler("ticket", ticket))
-dispatcher.add_handler(MessageHandler(Filters.text, ticket2))
+ticket_handler = ConversationHandler(
+    entry_points = [CommandHandler("ticket", ticket)],
+    states = {
+        0: [MessageHandler(Filters.text, ticket2)]
+    },
+
+    fallbacks = [],
+    allow_reentry = True,
+    per_chat=False
+)
+dispatcher.add_handler(ticket_handler)
