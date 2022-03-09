@@ -16,6 +16,8 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Upda
 cg = CoinGeckoAPI()
 b = cg.get_coins_list()
 
+dor = cg.get_price(ids='doragonland', vs_currencies='usd',include_market_cap='true', include_24hr_vol='true', include_24hr_change='true')
+
 aa = dor['doragonland']['usd']
 ab = round(dor['doragonland']['usd_24h_vol'],2)
 ac = round(dor['doragonland']['usd_24h_change'],2)
