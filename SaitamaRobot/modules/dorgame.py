@@ -136,9 +136,9 @@ def res(update: Update, context: CallbackContext):
         query.answer('player 2 not ur turn')
         return None
     choice = {
-            "rock": "🐉",
-            "paper": "🦇",
-             "scissor": "🏹"
+            "carrier": "🐉",
+            "sky patrol": "🦇",
+             "rain of fire": "🏹"
                         }
 
     a = choice[cd['choice1']]
