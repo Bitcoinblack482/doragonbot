@@ -174,7 +174,7 @@ def res(update: Update, context: CallbackContext):
           
         return ONE
      
-    elif cd['choice1'] == 'rock' and cd['choice2'] == 'scissor':
+    elif cd['choice1'] == 'carrier' and cd['choice2'] == 'rain of fire':
         cd['fromhp'] -= 0
         cd['tohp'] -= 1
         query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
@@ -203,7 +203,7 @@ def res(update: Update, context: CallbackContext):
 
         return ONE
 
-    elif cd['choice1'] == 'scissor' and cd['choice2'] == 'rock':
+    elif cd['choice1'] == 'rain of fire' and cd['choice2'] == 'carrier':
         cd['fromhp'] -= 1
         cd['tohp'] -= 0
         query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
@@ -231,7 +231,7 @@ def res(update: Update, context: CallbackContext):
 
         return ONE
 
-    elif cd['choice1'] == 'rock' and cd['choice2'] == 'paper':
+    elif cd['choice1'] == 'carrier' and cd['choice2'] == 'sky patrol':
         cd['fromhp'] -= 1
         cd['tohp'] -= 0
         query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
@@ -259,7 +259,7 @@ def res(update: Update, context: CallbackContext):
 
         return ONE
 
-    elif cd['choice1'] == 'paper' and cd['choice2'] == 'rock':
+    elif cd['choice1'] == 'sky patrol' and cd['choice2'] == 'carrier':
         cd['fromhp'] -= 0
         cd['tohp'] -= 1
         query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
@@ -286,7 +286,7 @@ def res(update: Update, context: CallbackContext):
           return ConversationHandler.END
         return ONE
 
-    elif cd['choice1'] == 'paper' and cd['choice2'] == 'scissor':
+    elif cd['choice1'] == 'sky patrol' and cd['choice2'] == 'rain of fire':
         cd['fromhp'] -= 1
         cd['tohp'] -= 0
         query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
@@ -314,7 +314,7 @@ def res(update: Update, context: CallbackContext):
 
         return ONE
 
-    elif cd['choice1'] == 'scissor' and cd['choice2'] == 'paper':
+    elif cd['choice1'] == 'rain of fire' and cd['choice2'] == 'sky patrol':
         cd['fromhp'] -= 0
         cd['tohp'] -= 1
         query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
