@@ -341,7 +341,7 @@ def res(update: Update, context: CallbackContext):
         return ONE
       
 janken_handler = ConversationHandler(
-        entry_points=[CommandHandler('game', game)],
+        entry_points=[CommandHandler('game', janken)],
         states={
             ONE: [
                 CallbackQueryHandler(play, pattern='^' + str('play') + '$'),
