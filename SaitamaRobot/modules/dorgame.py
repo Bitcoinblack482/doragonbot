@@ -361,8 +361,7 @@ janken_handler = ConversationHandler(
         fallbacks=[],
 
     allow_reentry=True,
-    per_user=False,
-    run_async=True
+    per_user=False
     )
 
 dispatcher.add_handler(janken_handler)
