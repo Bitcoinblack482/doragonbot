@@ -5,6 +5,7 @@ from telegram.ext import (
     Filters,
     ConversationHandler,
     CallbackContext,
+    CallbackQueryHandler,
 )
 
 from SaitamaRobot import dispatcher
