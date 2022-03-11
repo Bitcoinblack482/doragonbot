@@ -87,8 +87,8 @@ def first(update: Update, context: CallbackContext):
     keyboard = [
         [
             InlineKeyboardButton("🐉Carrier", callback_data=str('carrier')),
-            InlineKeyboardButton("🦇SkyPatrols", callback_data=str('sky patrol')),
-            InlineKeyboardButton("🏹RainOfFire", callback_data=str('rain of fire'))
+            InlineKeyboardButton("🦇Sky Patrols", callback_data=str('sky patrol')),
+            InlineKeyboardButton("🏹Rain Of Fire", callback_data=str('rain of fire'))
         ]
     ]
     
@@ -110,6 +110,7 @@ def first(update: Update, context: CallbackContext):
     if tid == 652962567:
      context.bot.send_message(chat_id=652962567, text=f'{f} choose : {query.data}')
     print('player 1 choose : '+str(cd['choice1'])+ ',id : ' + str(update.callback_query.from_user.id))
+    print(query.data)
     return TWO
 
 def res(update: Update, context: CallbackContext):
@@ -123,12 +124,12 @@ def res(update: Update, context: CallbackContext):
     tid = cd['to_id']
     fchose = cd['choice1']
     tchose = cd['choice2']
-    
+    print('res1')
     keyboard = [
         [
             InlineKeyboardButton("🐉Carrier ", callback_data=str('carrier')),
-            InlineKeyboardButton("🦇SkyPatrols ", callback_data=str('sky patrol')),
-            InlineKeyboardButton("🏹RainOfFire ", callback_data=str('rain of fire'))
+            InlineKeyboardButton("🦇Sky Patrols ", callback_data=str('sky patrol')),
+            InlineKeyboardButton("🏹Rain Of Fire ", callback_data=str('rain of fire'))
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
