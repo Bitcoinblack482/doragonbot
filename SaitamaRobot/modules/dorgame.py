@@ -61,9 +61,9 @@ def play(update: Update, context: CallbackContext):
 
     keyboard = [
         [
-            InlineKeyboardButton("🐉Carrier", callback_data=str('rock')),
-            InlineKeyboardButton("🦇SkyPatrols", callback_data=str('paper')),
-            InlineKeyboardButton("🏹RainOfFire", callback_data=str('scissor'))
+            InlineKeyboardButton("🐉Carrier", callback_data=str('carrier')),
+            InlineKeyboardButton("🦇SkyPatrols", callback_data=str('sky patrol')),
+            InlineKeyboardButton("🏹RainOfFire", callback_data=str('rain of fire'))
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -86,9 +86,9 @@ def first(update: Update, context: CallbackContext):
 
     keyboard = [
         [
-            InlineKeyboardButton("🐉Carrier", callback_data=str('rock')),
-            InlineKeyboardButton("🦇SkyPatrols", callback_data=str('paper')),
-            InlineKeyboardButton("🏹RainOfFire", callback_data=str('scissor'))
+            InlineKeyboardButton("🐉Carrier", callback_data=str('carrier')),
+            InlineKeyboardButton("🦇SkyPatrols", callback_data=str('sky patrol')),
+            InlineKeyboardButton("🏹RainOfFire", callback_data=str('rain of fire'))
         ]
     ]
     
@@ -126,9 +126,9 @@ def res(update: Update, context: CallbackContext):
     
     keyboard = [
         [
-            InlineKeyboardButton("🐉Carrier ", callback_data=str('rock')),
-            InlineKeyboardButton("🦇SkyPatrols ", callback_data=str('paper')),
-            InlineKeyboardButton("🏹RainOfFire ", callback_data=str('scissor'))
+            InlineKeyboardButton("🐉Carrier ", callback_data=str('carrier')),
+            InlineKeyboardButton("🦇SkyPatrols ", callback_data=str('sky patrol')),
+            InlineKeyboardButton("🏹RainOfFire ", callback_data=str('rain of fire'))
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -347,14 +347,14 @@ janken_handler = ConversationHandler(
             ONE: [
                 CallbackQueryHandler(play, pattern='^' + str('play') + '$'),
                 CallbackQueryHandler(rules, pattern='^' + str('rules') + '$'),
-                CallbackQueryHandler(first, pattern='^' + str('rock') + '$'),
-                CallbackQueryHandler(first, pattern='^' + str('scissor') + '$'),
-                CallbackQueryHandler(first, pattern='^' + str('paper') + '$')
+                CallbackQueryHandler(first, pattern='^' + str('carrier') + '$'),
+                CallbackQueryHandler(first, pattern='^' + str('sky patrol') + '$'),
+                CallbackQueryHandler(first, pattern='^' + str('rain of fire') + '$')
             ],
             TWO: [
-                CallbackQueryHandler(res, pattern='^' + str('rock') + '$'),
-                CallbackQueryHandler(res, pattern='^' + str('scissor') + '$'),
-                CallbackQueryHandler(res, pattern='^' + str('paper') + '$')
+                CallbackQueryHandler(res, pattern='^' + str('carrier') + '$'),
+                CallbackQueryHandler(res, pattern='^' + str('sky patrol') + '$'),
+                CallbackQueryHandler(res, pattern='^' + str('rain of fire') + '$')
 
             ],
         },
