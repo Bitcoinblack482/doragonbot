@@ -1,3 +1,14 @@
+from telegram.ext import (
+    Updater,
+    CommandHandler,
+    MessageHandler,
+    Filters,
+    ConversationHandler,
+    CallbackContext,
+)
+
+from SaitamaRobot import dispatcher
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update, Message
 
 ONE , TWO , THREE , FOUR , FIRST , SECOND,  *_ = range(50)
 
