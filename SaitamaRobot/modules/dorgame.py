@@ -14,9 +14,11 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Upda
 ONE , TWO , THREE , FOUR , FIRST , SECOND,  *_ = range(50)
 
 
-def janken(update: Update, context: CallbackContext):
+def game(update: Update, context: CallbackContext):
     cd = context.chat_data
-    
+        if not update.message.reply_to_message:
+             update.message.reply_text('reply to someone')
+             return -1
     cd['fighter'] = name = update.effective_user.first_name
     cd['fighterid'] = fid = update.effective_user.id
     
@@ -342,8 +344,8 @@ def res(update: Update, context: CallbackContext):
 
         return ONE
       
-janken_handler = ConversationHandler(
-        entry_points=[CommandHandler('game', janken)],
+game_handler = ConversationHandler(
+        entry_points=[CommandHandler('game', game)],
         states={
             ONE: [
                 CallbackQueryHandler(play, pattern='^' + str('play') + '$'),
@@ -365,4 +367,4 @@ janken_handler = ConversationHandler(
     per_user=False
     )
 
-dispatcher.add_handler(janken_handler)
+dispatcher.add_handler(game_handler)
