@@ -19,6 +19,8 @@ def game(update: Update, context: CallbackContext):
     if not update.message.reply_to_message:
              update.message.reply_text('reply to someone')
              return -1
+    if update.message.reply_to_message.from_user.id == 5210931684:
+        update.message.reply_text('u cant play with bot')
     cd['fighter'] = name = update.effective_user.first_name
     cd['fighterid'] = fid = update.effective_user.id
     
