@@ -312,7 +312,7 @@ def res(update: Update, context: CallbackContext):
                                 f"_*Round : {cd['round']}*_\n"
                                 f"❤{f} : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n❤{t} : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
                                 f"*{f}* Make your decision\n"
-                                f'{t}', parse_mode=ParseMode.MARKDOWN_V2, reply_markup= reply_markup)
+                                f'{t}', reply_markup= reply_markup)
         
     if cd['fromhp'] == 0 or cd['tohp'] == 0:
           if cd['fromhp'] > cd['tohp']:
