@@ -187,6 +187,7 @@ def res(update: Update, context: CallbackContext):
             InlineKeyboardButton("⏱ SKIP ", callback_data=str('skip'))
         ]        
     ]
+    print(tid)
     reply_markup = InlineKeyboardMarkup(keyboard)
     if update.callback_query.from_user.id != tid:
         query.answer('player 2 not ur turn')
@@ -306,14 +307,14 @@ def res(update: Update, context: CallbackContext):
        cd['tomana'] -=4
        cd['tobuild']+=2
         
-       query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
+    query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
                                 f'results for this round\n\n'
                                 f"_*Round : {cd['round']}*_\n"
                                 f"❤{f} : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n❤{t} : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
                                 f"*{f}* Make your decision\n"
                                 f'{t}', parse_mode=ParseMode.MARKDOWN_V2, reply_markup= reply_markup)
         
-       if cd['fromhp'] == 0 or cd['tohp'] == 0:
+    if cd['fromhp'] == 0 or cd['tohp'] == 0:
           if cd['fromhp'] > cd['tohp']:
                     query.message.edit_text(f"{f} ❤️Hp : {cd['fromhp']}\n{t} ❤️Hp: {cd['tohp']}\n\n"
                                         f"{f} win !!\n"
@@ -326,7 +327,7 @@ def res(update: Update, context: CallbackContext):
                 query.message.edit_text(f"{f} ❤️Hp : {cd['fromhp']}\n{t} ❤️Hp: {cd['tohp']}\n\n"
                                         f" Draw!!\n")
           return ConversationHandler.END 
-       return ONE
+    return ONE
       
 game_handler = ConversationHandler(
         entry_points=[CommandHandler('pro', game)],
