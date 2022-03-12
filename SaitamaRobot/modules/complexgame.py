@@ -309,10 +309,10 @@ def res(update: Update, context: CallbackContext):
         
     query.message.edit_text(f'<b>{f}</b> chose {fchose}{a} and <b>{t}</b> chose {tchose}{b}\n'
                                 f'results for this round\n\n'
-                                f"<i><b>Round : {cd['round']}</b></i>\n"
-                                f"❤{f} : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n❤{t} : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
-                                f"<b>{f}* Make your decision</b>\n"
-                                f'{t}', parse_mode = ParseMode.HTML, reply_markup= reply_markup)
+                                f"<i><b>Round : {cd['round']}</b></i>\n\n"
+                                f"❤<b>{f}</b> : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n❤<b>{t}</b> : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
+                                f"<b>{f} Make your decision</b>\n"
+                                f'', parse_mode = ParseMode.HTML, reply_markup= reply_markup)
         
     if cd['fromhp'] == 0 or cd['tohp'] == 0:
           if cd['fromhp'] > cd['tohp']:
