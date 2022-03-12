@@ -165,7 +165,7 @@ def res(update: Update, context: CallbackContext):
                                 f'_its a Draw_\n\n'
                                 f"_*Round : {cd['round']}*_\n"
              f"❤{f} : {cd['fromhp']}\n❤{t} : {cd['tohp']}\n\n"
-             f"*{f}*Make you decision\n"
+             f"*{f}* Make your decision\n"
                                 f'{t}', parse_mode=ParseMode.MARKDOWN_V2, reply_markup= reply_markup)
 
         if cd['fromhp'] == 0 or cd['tohp'] == 0:
@@ -191,7 +191,7 @@ def res(update: Update, context: CallbackContext):
                                 f'_[{f}](tg://user?id={fid}) wins_\n\n'
                                 f"_*Round : {cd['round']}*_\n"
              f"❤{f} : {cd['fromhp']}\n❤{t} : {cd['tohp']}\n\n"
-             f"*{f}*Make you decision\n"
+             f"*{f}* Make your decision\n"
                                 , parse_mode=ParseMode.MARKDOWN_V2,reply_markup= reply_markup)
 
         if cd['fromhp'] == 0 or cd['tohp'] == 0:
@@ -220,7 +220,7 @@ def res(update: Update, context: CallbackContext):
                                 f'_[{t}](tg://user?id={tid}) wins_\n\n'
                                 f"_*Round : {cd['round']}*_\n"
              f"❤{f} : {cd['fromhp']}\n❤{t} : {cd['tohp']}\n\n"
-             f"*{f}*Make you decision\n"
+             f"*{f}* Make your decision\n"
                                 , parse_mode=ParseMode.MARKDOWN_V2,reply_markup= reply_markup)
 
         if cd['fromhp'] == 0 or cd['tohp'] == 0:
@@ -248,7 +248,7 @@ def res(update: Update, context: CallbackContext):
                                 f'_[{t}](tg://user?id={tid}) wins_\n\n'
                                 f"_*Round : {cd['round']}*_\n"
              f"❤{f} : {cd['fromhp']}\n❤{t} : {cd['tohp']}\n\n"
-             f"*{f}*Make you decision\n"
+             f"*{f}* Make your decision\n"
                                 , parse_mode=ParseMode.MARKDOWN_V2,reply_markup= reply_markup)
 
         if cd['fromhp'] == 0 or cd['tohp'] == 0:
@@ -276,7 +276,7 @@ def res(update: Update, context: CallbackContext):
                                 f'_[{f}](tg://user?id={fid}) wins_\n\n'
                                 f"_*Round : {cd['round']}*_\n"
              f"❤{f} : {cd['fromhp']}\n❤{t} : {cd['tohp']}\n\n"
-             f"*{f}*Make you decision\n"
+             f"*{f}* Make your decision\n"
                                 , parse_mode=ParseMode.MARKDOWN_V2,reply_markup= reply_markup)
 
         if cd['fromhp'] == 0 or cd['tohp'] == 0:
@@ -303,7 +303,7 @@ def res(update: Update, context: CallbackContext):
                                 f'_[{t}](tg://user?id={tid}) wins_\n\n'
                                 f"_*Round : {cd['round']}*_\n"
              f"❤{f} : {cd['fromhp']}\n❤{t} : {cd['tohp']}\n\n"
-             f"*{f}*Make you decision\n"
+             f"*{f}* Make your decision\n"
                                 , parse_mode=ParseMode.MARKDOWN_V2,reply_markup= reply_markup)
 
         if cd['fromhp'] == 0 or cd['tohp'] == 0:
@@ -331,7 +331,7 @@ def res(update: Update, context: CallbackContext):
                                 f'_[{f}](tg://user?id={fid}) wins_\n\n'
                                 f"_*Round : {cd['round']}*_\n"
              f"❤{f} : {cd['fromhp']}\n❤{t} : {cd['tohp']}\n\n"
-             f"*{f}*Make you decision\n"
+             f"*{f}* Make your decision\n"
                                 , parse_mode=ParseMode.MARKDOWN_V2,reply_markup= reply_markup)
 
         if cd['fromhp'] == 0 or cd['tohp'] == 0:
