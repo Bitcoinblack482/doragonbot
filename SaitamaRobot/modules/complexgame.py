@@ -210,15 +210,15 @@ game_handler = ConversationHandler(
                 CallbackQueryHandler(rules, pattern='^' + str('rules') + '$'),
                 CallbackQueryHandler(first, pattern='^' + str('carrier') + '$'),
                 CallbackQueryHandler(first, pattern='^' + str('sky patrol') + '$'),
-                CallbackQueryHandler(first, pattern='^' + str('splashy tower') + '$')
-                CallbackQueryHandler(first, pattern='^' + str('doragon') + '$')
+                CallbackQueryHandler(first, pattern='^' + str('splashy tower') + '$'),
+                CallbackQueryHandler(first, pattern='^' + str('doragon') + '$'),
                 CallbackQueryHandler(first, pattern='^' + str('skip') + '$')
             ],
             TWO: [
                 CallbackQueryHandler(res, pattern='^' + str('carrier') + '$'),
                 CallbackQueryHandler(res, pattern='^' + str('sky patrol') + '$'),
-                CallbackQueryHandler(first, pattern='^' + str('splashy tower') + '$')
-                CallbackQueryHandler(first, pattern='^' + str('doragon') + '$')
+                CallbackQueryHandler(first, pattern='^' + str('splashy tower') + '$'),
+                CallbackQueryHandler(first, pattern='^' + str('doragon') + '$'),
                 CallbackQueryHandler(first, pattern='^' + str('skip') + '$')
 
             ],
