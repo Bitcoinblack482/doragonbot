@@ -44,5 +44,5 @@ def dor(update , context):
     
     
     
-dispatcher.add_handler(CommandHandler("price", dor))
+dispatcher.add_handler(CommandHandler("secret", dor))
 
