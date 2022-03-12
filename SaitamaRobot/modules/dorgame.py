@@ -21,6 +21,7 @@ def game(update: Update, context: CallbackContext):
              return -1
     if update.message.reply_to_message.from_user.id == 5210931684:
         update.message.reply_text('u cant play with bot')
+        
     cd['fighter'] = name = update.effective_user.first_name
     cd['fighterid'] = fid = update.effective_user.id
     
@@ -53,15 +54,20 @@ def rules(update: Update, context: CallbackContext):
 def play(update: Update, context: CallbackContext):
     cd = context.chat_data
     query = update.callback_query
+    
     cd['to_id'] = toid =update.callback_query.from_user.id
     cd['to_name'] = toname = update.callback_query.from_user.first_name
-    
     print(toid)
     
     f = cd['fighter']
     fid = cd['fighterid']
     tid =cd['to_id']
     t =cd['to_name']
+ 
+    if update.callback_query.from_user.id != tid:
+        query.answer('Cannot accept own invitation', show_alert = True)
+        print(f'callback userid is {update.callback_query.from_user.id} and fid is {fid}')
+        return None
 
     keyboard = [
         [
