@@ -206,18 +206,18 @@ def res(update: Update, context: CallbackContext):
         query.answer('player 1 not ur turn')
         return None
 
-    if cd['choice1'] == 'carrier' and cd['tobuild'] == 0:
+    if cd['choice1'] == 'carrier' and cd['tobuild'] == 0 and cd['choice2'] != 'sky patrol':
        cd['frommana'] -=5
        cd['tohp']-=6
         
-    if cd['choice2'] == 'carrier' and cd['frombuild'] == 0:
+    if cd['choice2'] == 'carrier' and cd['frombuild'] == 0 and cd['choice1'] != 'sky patrol':
        cd['tomana'] -=5
        cd['fromhp']-=6
         
-    if cd['choice1'] == 'carrier' and cd['tobuild'] >0:
+    if cd['choice1'] == 'carrier' and cd['tobuild'] >0 and cd['choice2'] != 'sky patrol':
        cd['frommana'] -=5    
        cd['tobuild'] ==0
-    if cd['choice2'] == 'carrier' and cd['frombuild'] >0:
+    if cd['choice2'] == 'carrier' and cd['frombuild'] >0 and cd['choice1'] != 'sky patrol':
        cd['tomana'] -=5
        cd['frombuild'] == 0
         
@@ -307,12 +307,12 @@ def res(update: Update, context: CallbackContext):
        cd['tomana'] -=4
        cd['tobuild']+=2
         
-    query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
+    query.message.edit_text(f'<b>{f}</b> chose {fchose}{a} and <b>{t}</b> chose {tchose}{b}\n'
                                 f'results for this round\n\n'
-                                f"_*Round : {cd['round']}*_\n"
+                                f"<i><b>Round : {cd['round']}</b></i>\n"
                                 f"❤{f} : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n❤{t} : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
-                                f"*{f}* Make your decision\n"
-                                f'{t}', reply_markup= reply_markup)
+                                f"<b>{f}* Make your decision</b>\n"
+                                f'{t}', parse_mode = ParseMode.HTML, reply_markup= reply_markup)
         
     if cd['fromhp'] == 0 or cd['tohp'] == 0:
           if cd['fromhp'] > cd['tohp']:
