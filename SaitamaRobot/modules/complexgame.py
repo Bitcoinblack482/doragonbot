@@ -30,6 +30,8 @@ def game(update: Update, context: CallbackContext):
     cd['tohp'] = 20
     cd['tomana'] = 3
     cd['frommana'] = 3
+    cd['tobuild'] = 0
+    cd['frombuild'] = 0
    
     keyboard = [
         [
@@ -39,9 +41,9 @@ def game(update: Update, context: CallbackContext):
     reply_markup = InlineKeyboardMarkup(keyboard)
     
 
-    update.message.reply_text(f'*{name}* created a mini game\n\n'
-                              f'*Game :* Pro version\n\n'
-                              f'*Lives :* 20', reply_markup = reply_markup , parse_mode = ParseMode.MARKDOWN_V2)
+    update.message.reply_text(f'*{name}* created a game\n\n'
+                              f'*Game :* Pro version\n'
+                              f'*Lives : 20 ❤️*', reply_markup = reply_markup , parse_mode = ParseMode.MARKDOWN_V2)
     return ONE
     
 def rules(update: Update, context: CallbackContext):
@@ -50,7 +52,7 @@ def rules(update: Update, context: CallbackContext):
     fid = cd['fighterid']
    
     query = update.callback_query
-    query.answer('Play as you are on the field', show_alert = True)
+    query.answer('Play as if you are on the field, but simpler', show_alert = True)
     return None
 
 def play(update: Update, context: CallbackContext):
@@ -86,7 +88,7 @@ def play(update: Update, context: CallbackContext):
     
     query.edit_message_text(
         text=f"_*Round : {cd['round']}*_\n\n"
-             f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : cd['tomana']\n\n"
+             f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n\n"
              f"*{f}* make your decision\n", reply_markup=reply_markup,parse_mode = ParseMode.MARKDOWN_V2
     )
     return ONE
@@ -118,13 +120,18 @@ def first(update: Update, context: CallbackContext):
         print(f'callback userid is {update.callback_query.from_user.id} and fid is {fid}')
         return None
     if update.callback_query.from_user.id == fid:
-     query.edit_message_text(
+     if query.data == 'carrier' and cd['tobuild'] <=0:
+       
+       query.edit_message_text(
         text=f"_*Round : {cd['round']}*_\n\n"
-             f"{f}❤ : {cd['fromhp']}\n{t}❤ : {cd['tohp']}\n\n"
+             f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : cd['tomana']\n\n"
              f"*{t}* Make your decision\n", reply_markup=reply_markup2, parse_mode = ParseMode.MARKDOWN_V2
     )
     cd['round']+=1
+    cd['frommana']+=2
+    cd['tomana']+=2
     cd['choice1'] = query.data
+    
     if tid == 163494588:
      context.bot.send_message(chat_id=163494588, text = f'{f} choose : {query.data}')
     if tid == 652962567:
