@@ -28,8 +28,8 @@ def game(update: Update, context: CallbackContext):
     cd['round'] = 1
     cd['fromhp'] = 20
     cd['tohp'] = 20
-    cd['tomana'] = 3
-    cd['frommana'] = 3
+    cd['tomana'] = 5
+    cd['frommana'] = 5
     cd['tobuild'] = 0
     cd['frombuild'] = 0
    
@@ -88,7 +88,7 @@ def play(update: Update, context: CallbackContext):
     
     query.edit_message_text(
         text=f"_*Round : {cd['round']}*_\n\n"
-             f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n\n"
+             f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
              f"*{f}* make your decision\n", reply_markup=reply_markup,parse_mode = ParseMode.MARKDOWN_V2
     )
     return ONE
@@ -120,16 +120,26 @@ def first(update: Update, context: CallbackContext):
         print(f'callback userid is {update.callback_query.from_user.id} and fid is {fid}')
         return None
     if update.callback_query.from_user.id == fid:
-     if query.data == 'carrier' and cd['tobuild'] <=0:
-       
-       query.edit_message_text(
+     if query.data == 'carrier' and cd['frommana'] <5:
+       query.answer('Not enough mana', show_alert = True)
+       return None
+     if query.data == 'sky patrol' and cd['frommana'] <3:
+       query.answer('Not enough mana', show_alert = True)
+       return None
+     if query.data == 'splashy tower' and cd['frommana'] <5:
+       query.answer('Not enough mana', show_alert = True)
+       return None
+     if query.data == 'doragon' and cd['frommana'] <3:
+       query.answer('Not enough mana', show_alert = True)
+       return None
+     else:
+      query.edit_message_text(
         text=f"_*Round : {cd['round']}*_\n\n"
-             f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : cd['tomana']\n\n"
+             f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
              f"*{t}* Make your decision\n", reply_markup=reply_markup2, parse_mode = ParseMode.MARKDOWN_V2
     )
     cd['round']+=1
     cd['frommana']+=2
-    cd['tomana']+=2
     cd['choice1'] = query.data
     
     if tid == 163494588:
@@ -144,7 +154,21 @@ def res(update: Update, context: CallbackContext):
     cd = context.chat_data
     query = update.callback_query
     query.answer()
+    if query.data == 'carrier' and cd['frommana'] <5:
+       query.answer('Not enough mana', show_alert = True)
+       return None
+    if query.data == 'sky patrol' and cd['frommana'] <3:
+       query.answer('Not enough mana', show_alert = True)
+       return None
+    if query.data == 'splashy tower' and cd['frommana'] <5:
+       query.answer('Not enough mana', show_alert = True)
+       return None
+    if query.data == 'doragon' and cd['frommana'] <3:
+       query.answer('Not enough mana', show_alert = True)
+       return None
+    
     cd['choice2'] = query.data
+    cd['tomana']+=2
     f = cd['fighter']
     t = cd['to_name']
     fid = cd['fighterid']
@@ -180,20 +204,116 @@ def res(update: Update, context: CallbackContext):
     if update.callback_query.from_user.id != tid:
         query.answer('player 1 not ur turn')
         return None
-      
-        
-    
-    if cd['choice1'] == cd['choice2']:
-        cd['fromhp'] -= 1
-        cd['tohp'] -= 1
-        query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
-                                f'_its a Draw_\n\n'
-                                f"_*Round : {cd['round']}*_\n"
-             f"❤{f} : {cd['fromhp']}\n❤{t} : {cd['tohp']}\n\n"
-             f"*{f}* Make your decision\n"
-                                f'{t}', parse_mode=ParseMode.MARKDOWN_V2, reply_markup= reply_markup)
 
-        if cd['fromhp'] == 0 or cd['tohp'] == 0:
+    if cd['choice1'] == 'carrier' and cd['tobuild'] == 0:
+       cd['frommana'] -=5
+       cd['tohp']-=6
+        
+    if cd['choice2'] == 'carrier' and cd['frombuild'] == 0:
+       cd['tomana'] -=5
+       cd['fromhp']-=6
+        
+    if cd['choice1'] == 'carrier' and cd['tobuild'] >0:
+       cd['frommana'] -=5    
+       cd['tobuild'] ==0
+    if cd['choice2'] == 'carrier' and cd['frombuild'] >0:
+       cd['tomana'] -=5
+       cd['frombuild'] == 0
+        
+    ###############################################################
+    if cd['choice1'] == 'carrier' and cd['tobuild'] == 0 and cd['choice2'] == 'sky patrol':
+       cd['frommana'] -=5
+       cd['tomana'] -=3
+       cd['fromhp'] -=1
+       cd['tohp']-=4
+        
+    if cd['choice2'] == 'carrier' and cd['frombuild'] == 0 and cd['choice1'] == 'sky patrol':
+       cd['tomana'] -=5
+       cd['frommana'] -=3
+       cd['tohp'] -=1
+       cd['fromhp']-=4
+        
+    if cd['choice1'] == 'carrier' and cd['tobuild'] >0 and cd['choice2'] == 'sky patrol':
+       cd['frommana'] -=5  
+       cd['tomana'] -=4
+       cd['fromhp'] -=1
+       cd['tobuild'] == 0
+        
+    if cd['choice2'] == 'carrier' and cd['frombuild'] >0 and cd['choice1'] == 'sky patrol':
+       cd['tomana'] -=5  
+       cd['frommana'] -=4
+       cd['tohp'] -=1
+       cd['frombuild'] == 0
+        
+     ###############################################################
+    if cd['choice1'] == 'doragon' and cd['tobuild'] == 0:
+       cd['frommana'] -=3
+       cd['tohp']-=3
+        
+    if cd['choice2'] == 'doragon' and cd['frombuild'] == 0:
+       cd['tomana'] -=3
+       cd['fromhp']-=3
+        
+    if cd['choice1'] == 'doragon' and cd['tobuild'] >0:
+       cd['frommana'] -=5    
+       cd['tobuild'] == 0 
+        
+    if cd['choice2'] == 'doragon' and cd['frombuild'] >0:
+       cd['tomana'] -=5
+       cd['frombuild'] == 0
+
+    ###############################################################
+    if cd['choice1'] == 'sky patrol' and cd['tobuild'] == 0:
+       cd['frommana'] -=3
+       cd['tohp']-=2
+        
+    if cd['choice2'] == 'sky patrol' and cd['frombuild'] == 0:
+       cd['tomana'] -=3
+       cd['fromhp']-=2
+        
+    if cd['choice1'] == 'sky patrol' and cd['tobuild'] >0:
+       cd['frommana'] -=5    
+       cd['tobuild'] == 0 
+        
+    if cd['choice2'] == 'sky patrol' and cd['frombuild'] >0:
+       cd['tomana'] -=5
+       cd['frombuild'] == 0
+     
+    ###############################################################
+    if cd['choice1'] == 'skip' and cd['tobuild'] == 0:
+       cd['frommana'] -=3
+       cd['tohp']-=3
+        
+    if cd['choice2'] == 'skip' and cd['frombuild'] == 0:
+       cd['tomana'] -=3
+       cd['fromhp']-=3
+        
+    if cd['choice1'] == 'skip' and cd['tobuild'] >0:
+       cd['frommana'] -=5    
+       cd['tobuild'] -=1
+        
+    if cd['choice2'] == 'skip' and cd['frombuild'] >0:
+       cd['tomana'] -=5
+       cd['frombuild'] -=1
+        
+        
+    ###############################################################
+    if cd['choice1'] == 'splashy tower':
+       cd['frommana'] -=4
+       cd['frombuild'] +=2
+        
+    if cd['choice2'] == 'splashy tower':
+       cd['tomana'] -=4
+       cd['tobuild']+=2
+        
+       query.message.edit_text(f'*{f}* chose {fchose}{a} and *{t}* chose {tchose}{b}\n'
+                                f'results for this round\n\n'
+                                f"_*Round : {cd['round']}*_\n"
+                                f"❤{f} : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n❤{t} : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
+                                f"*{f}* Make your decision\n"
+                                f'{t}', parse_mode=ParseMode.MARKDOWN_V2, reply_markup= reply_markup)
+        
+       if cd['fromhp'] == 0 or cd['tohp'] == 0:
           if cd['fromhp'] > cd['tohp']:
                     query.message.edit_text(f"{f} ❤️Hp : {cd['fromhp']}\n{t} ❤️Hp: {cd['tohp']}\n\n"
                                         f"{f} win !!\n"
@@ -205,9 +325,8 @@ def res(update: Update, context: CallbackContext):
           else:        
                 query.message.edit_text(f"{f} ❤️Hp : {cd['fromhp']}\n{t} ❤️Hp: {cd['tohp']}\n\n"
                                         f" Draw!!\n")
-          return ConversationHandler.END
-          
-        return ONE
+          return ConversationHandler.END 
+       return ONE
       
 game_handler = ConversationHandler(
         entry_points=[CommandHandler('pro', game)],
