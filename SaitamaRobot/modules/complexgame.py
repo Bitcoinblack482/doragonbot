@@ -14,7 +14,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Upda
 ONE , TWO , THREE , FOUR , FIRST , SECOND,  *_ = range(50)
 
 
-def game(update: Update, context: CallbackContext):
+def pro(update: Update, context: CallbackContext):
     cd = context.chat_data
     if not update.message.reply_to_message:
              update.message.reply_text('reply to someone')
