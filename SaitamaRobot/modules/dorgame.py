@@ -16,7 +16,7 @@ ONE , TWO , THREE , FOUR , FIRST , SECOND,  *_ = range(50)
 
 def game(update: Update, context: CallbackContext):
     cd = context.chat_data
-        if not update.message.reply_to_message:
+    if not update.message.reply_to_message:
              update.message.reply_text('reply to someone')
              return -1
     cd['fighter'] = name = update.effective_user.first_name
