@@ -89,7 +89,7 @@ def play(update: Update, context: CallbackContext):
     query.edit_message_text(
         text=f"_*Round : {cd['round']}*_\n\n"
              f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
-             f"*{f}* make your decision\n", reply_markup=reply_markup,parse_mode = ParseMode.MARKDOWN_V2
+             f"*{f}* play : make your decision\n", reply_markup=reply_markup,parse_mode = ParseMode.MARKDOWN_V2
     )
     return ONE
 
@@ -136,7 +136,7 @@ def first(update: Update, context: CallbackContext):
       query.edit_message_text(
         text=f"_*Round : {cd['round']}*_\n\n"
              f"{f}❤ : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n{t}❤ : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
-             f"*{t}* Make your decision\n", reply_markup=reply_markup2, parse_mode = ParseMode.MARKDOWN_V2
+             f"*{t}* first : Make your decision\n", reply_markup=reply_markup2, parse_mode = ParseMode.MARKDOWN_V2
     )
     cd['round']+=1
     cd['frommana']+=2
@@ -307,7 +307,7 @@ def res(update: Update, context: CallbackContext):
                                 f'results for this round\n\n'
                                 f"<i><b>Round : {cd['round']}</b></i>\n\n"
                                 f"❤<b>{f}</b> : {cd['fromhp']}\n🌀Mana : {cd['frommana']}\n🛕Splashy Tower : {cd['frombuild']}\n\n❤<b>{t}</b> : {cd['tohp']}\n🌀Mana : {cd['tomana']}\n🛕Splashy Tower : {cd['tobuild']}\n\n"
-                                f"<b>{f} Make your decision</b>\n"
+                                f"<b>{f} res : Make your decision</b>\n"
                                 f'', parse_mode = ParseMode.HTML, reply_markup= reply_markup)
         
     if cd['fromhp'] == 0 or cd['tohp'] == 0:
