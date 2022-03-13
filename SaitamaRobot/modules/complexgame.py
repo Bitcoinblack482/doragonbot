@@ -282,8 +282,10 @@ def res(update: Update, context: CallbackContext):
      
     ###############################################################
     if cd['choice1'] == 'skip' and cd['tobuild'] == 0:
-        
+       cd['frommana'] +=0
+    
     if cd['choice2'] == 'skip' and cd['frombuild'] == 0:
+        cd['tomana'] +=0
         
     if cd['choice1'] == 'skip' and cd['tobuild'] >0:  
        cd['tobuild'] -=1
