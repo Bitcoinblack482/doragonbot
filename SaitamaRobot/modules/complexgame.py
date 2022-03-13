@@ -154,16 +154,16 @@ def res(update: Update, context: CallbackContext):
     cd = context.chat_data
     query = update.callback_query
     query.answer()
-    if query.data == 'carrier' and cd['frommana'] <5:
+    if query.data == 'carrier' and cd['tomana'] <5:
        query.answer('Not enough mana', show_alert = True)
        return None
-    if query.data == 'sky patrol' and cd['frommana'] <3:
+    if query.data == 'sky patrol' and cd['tomana'] <3:
        query.answer('Not enough mana', show_alert = True)
        return None
-    if query.data == 'splashy tower' and cd['frommana'] <5:
+    if query.data == 'splashy tower' and cd['tomana'] <5:
        query.answer('Not enough mana', show_alert = True)
        return None
-    if query.data == 'doragon' and cd['frommana'] <3:
+    if query.data == 'doragon' and cd['tomana'] <3:
        query.answer('Not enough mana', show_alert = True)
        return None
     
