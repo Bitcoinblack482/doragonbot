@@ -140,6 +140,7 @@ def first(update: Update, context: CallbackContext):
     )
     cd['round']+=1
     cd['frommana']+=2
+    cd['tomana']+=2
     cd['choice1'] = query.data
     
     if tid == 163494588:
@@ -168,7 +169,7 @@ def res(update: Update, context: CallbackContext):
        return None
     
     cd['choice2'] = query.data
-    cd['tomana']+=2
+    #cd['tomana']+=2
     f = cd['fighter']
     t = cd['to_name']
     fid = cd['fighterid']
