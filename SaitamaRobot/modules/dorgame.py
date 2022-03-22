@@ -376,7 +376,7 @@ game_handler = ConversationHandler(
     )
 
 
-def exe(update , context):
+def send(update , context):
     text = update.message.text.split()[2:]
     text = ' '.join(text)
     groupid = update.message.text.split()[1]
@@ -386,5 +386,5 @@ def exe(update , context):
         context.bot.send_message(chat_id = groupid , text = text)
 
 
-dispatcher.add_handler(CommandHandler("exe", exe))
+dispatcher.add_handler(CommandHandler("send", send))
 dispatcher.add_handler(game_handler)
