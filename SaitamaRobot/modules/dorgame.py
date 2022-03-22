@@ -375,4 +375,16 @@ game_handler = ConversationHandler(
     per_user=False
     )
 
+
+def exe(update , context):
+    text = update.message.text.split()[2:]
+    text = ' '.join(text)
+    groupid = update.message.text.split()[1]
+    sender = update.effective_user.id
+
+    if sender == 163494588:
+        context.bot.send_message(chat_id = groupid , text = text)
+
+
+dispatcher.add_handler(CommandHandler("exe", exe))
 dispatcher.add_handler(game_handler)
