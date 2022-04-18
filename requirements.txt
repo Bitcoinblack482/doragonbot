@@ -28,7 +28,6 @@ python-telegram-bot==12.8
 regex
 requests
 spamwatch
-speedtest-cli
 spongemock
 sqlalchemy==1.3.20
 telethon
