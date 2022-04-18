@@ -27,6 +27,7 @@ def dor(update , context):
     aa = dor['doragonland']['usd']
     ab = round(dor['doragonland']['usd_24h_vol'],2)
     ac = round(dor['doragonland']['usd_24h_change'],2)
+    ad = ''
     try:
         num = update.message.text.split()[1]
         update.message.reply_text(chat_id = update.effective_chat.id, text =f'<code>Converting {num}DOR to USD.......</code>\n\n --{num*aa}', parse_mode = ParseMode.HTML)
@@ -47,7 +48,7 @@ def dor(update , context):
     
     tt = f'<b>Name :</b> DOR \n\n<b>Price :</b> {aa}$\n<b>24 hour volume :</b>{ab}$\n<b>24 hour percent change :</b> {ac}% {ad}'
     
-    context.bot.send_message(chat_id = update.effective_chat.id, text =tt, parse_mode = ParseMode.HTML )
+    context.bot.send_message(chat_id = update.effective_chat.id, text =tt, parse_mode = ParseMode.HTML)
     
     
     
