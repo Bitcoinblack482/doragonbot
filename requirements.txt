@@ -1,7 +1,7 @@
 aiohttp>=2.2.5
 alphabet_detector
 beautifulsoup4
-bleach
+#bleach
 cachetools
 coffeehouse
 CurrencyConverter
