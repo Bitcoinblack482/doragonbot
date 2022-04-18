@@ -1,7 +1,7 @@
 aiohttp>=2.2.5
 alphabet_detector
 beautifulsoup4
-#bleach
+bleach
 cachetools
 coffeehouse
 CurrencyConverter
@@ -16,7 +16,7 @@ googletrans==3.1.0a0
 google_trans_new
 humanize
 jikanpy
-lxml
+#lxml
 nltk
 Pillow>=4.2.0
 pretty_errors
