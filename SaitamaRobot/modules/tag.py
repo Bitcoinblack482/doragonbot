@@ -22,9 +22,9 @@ def opt_in(update , context):
   user = update.effective_user.first_name
   users = update.effective_user.name
   
-  d = {chatid:user}
+  d = {chatid:users}
   list.append(d)
-  update.message.reply_text(f'{users} you have opt in : group id {chatid}!')
+  update.message.reply_text(f'{user} you have opt in : group id {chatid}!')
   
 
 def opt_out(update , context):
@@ -33,9 +33,9 @@ def opt_out(update , context):
   user = update.effective_user.first_name
   users = update.effective_user.name
   
-  list = [i for i in list if not i[chatid] == str(user)]
+  list = [i for i in list if not i[chatid] == str(users)]
   
-  update.message.reply_text(f'{users} you have opt out : group id {chatid}!')
+  update.message.reply_text(f'{user} you have opt out : group id {chatid}!')
   
   
 def all(update , context):
