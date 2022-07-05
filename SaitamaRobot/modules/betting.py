@@ -53,7 +53,7 @@ def betboard(update , context):
     
     for i in list:
         
-    if len(c)==0:
+     if len(c)==0:
         update.message.reply_text('No competition going on right now')
         return -1
     
