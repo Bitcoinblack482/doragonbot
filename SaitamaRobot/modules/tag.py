@@ -55,9 +55,9 @@ def all(update , context):
     
   
  
-dispatcher.add_handler(CommandHandler("opt_in", op_in))
+dispatcher.add_handler(CommandHandler("opt_in", opt_in))
 
-dispatcher.add_handler(CommandHandler("opt_out", op_out))
+dispatcher.add_handler(CommandHandler("opt_out", opt_out))
 
 dispatcher.add_handler(CommandHandler("all", all))
 
