@@ -22,7 +22,7 @@ def opt_in(update , context):
   user = update.effective_user.first_name
   users = update.effective_user.name
   
-  d = {chatid:users}
+  d = {'user':users, 'group':chatid}
   list.append(d)
   update.message.reply_text(f'{user} you have opt in : group id {chatid}!')
   
@@ -33,7 +33,7 @@ def opt_out(update , context):
   user = update.effective_user.first_name
   users = update.effective_user.name
   
-  list = [i for i in list if not i[chatid] == str(users)]
+  list = [i for i in list if not i['user'] == users and i['group'] == chatid]
   
   update.message.reply_text(f'{user} you have opt out : group id {chatid}!')
   
@@ -49,7 +49,8 @@ def all(update , context):
   text = ''
   
   for i in list:
-    text += i[chatid] + '\n'
+    if i['group'] == chatid:
+        text +=i['user'] +'\n'
     
   update.message.reply_text(f'Doragon summon you all : \n\n{text}')
     
