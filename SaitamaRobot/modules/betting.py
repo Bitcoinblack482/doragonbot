@@ -168,8 +168,7 @@ BET_HANDLER = ConversationHandler(
         },
         fallbacks=[],
         allow_reentry=True,
-        per_user=False,
-        run_async=True
+        per_user=False
     )
 
 dispatcher.add_handler(BET_HANDLER)
