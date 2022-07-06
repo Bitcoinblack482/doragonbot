@@ -27,6 +27,7 @@ share = 0
 def startbet(update , context):
   global status 
   global c 
+  global list
   name = update.effective_user.name
   id = update.effective_user.id
   try:
@@ -42,6 +43,7 @@ def startbet(update , context):
     
   if len(c) !=0:
     c = []
+    list = []
     
     
   c.append(c1)
@@ -121,6 +123,21 @@ def bet(update , context):
   
     
     return ONE
+
+def bet3(update , context):
+    cd = context.chat_data
+    query = update.callback_query
+    bet_on = cd['bet_on']
+    amount = cd['amount']
+    name  = cd['name']
+    
+    if update.callback_query.from_user.id not in boss:
+        query.answer('Not authroised')
+        return None
+    query.edit_message_text(f'<b>Your bet on {bet_on} with {amount} DOR has been <u>Rejected</u> by {by}</b>', parse_mode=ParseMode.HTML)
+    
+    ConversationHandler.END
+    
     
 def bet2(update , context):
     global list
