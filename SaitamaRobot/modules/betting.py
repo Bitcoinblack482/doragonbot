@@ -115,6 +115,7 @@ def bet2(update , context):
     global total
     cd = context.chat_data
     query = update.callback_query
+    print('enter here 1')
     
     bet_on = cd['bet_on']
     amount = cd['amount']
@@ -128,6 +129,7 @@ def bet2(update , context):
     total += amount
     d = {'user':name, 'bet_on':bet_on, 'amount':amount}
     list.append(d)
+    print('enter here 2')
     
     query.edit_message_text(f'<b>Your bet on {bet_on} with {amount} DOR has been approved</b>', parse_mode=ParseMode.HTML)
     return ConversationHandler.END
@@ -164,9 +166,6 @@ def register(update , context):
     except IndexError:
      update.message.reply_text('Please enter /register on \nor\n/register off')
      return -1
-        
-    
-
 
 def mybet(update , context):
     global share1
