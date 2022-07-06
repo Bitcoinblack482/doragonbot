@@ -106,6 +106,7 @@ def bet(update , context):
     keyboard = [[InlineKeyboardButton('Approve', callback_data='approve')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
+    print('done')
     update.message.reply_text(f'You bet on {bet_on} with {amount} DOR\n\n <b>waiting for admin to check and approve</b>', parse_mode=ParseMode.HTML,
                             reply_markup=reply_markup)
     
@@ -221,11 +222,11 @@ def mybet(update , context):
     
     
 
-dispatcher.add_handler(CommandHandler("startbet", startbet))
+
 BET_HANDLER = ConversationHandler(
         entry_points=[CommandHandler('bet', bet, pass_user_data=True)],
         states={
-            ONE: [CallbackQueryHandler(bet2, pattern="approve", pass_user_data=True),]
+            ONE: [CallbackQueryHandler(bet2, pattern="approve", pass_user_data=True)]
         },
         fallbacks=[],
         allow_reentry=True,
@@ -236,5 +237,5 @@ dispatcher.add_handler(BET_HANDLER)
 dispatcher.add_handler(CommandHandler("register", register))
 dispatcher.add_handler(CommandHandler("mybet", mybet))
 dispatcher.add_handler(CommandHandler("betboard", betboard))
-
+dispatcher.add_handler(CommandHandler("startbet", startbet))
 
