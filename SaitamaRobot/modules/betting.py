@@ -69,7 +69,7 @@ def betboard(update , context):
                               f'Total pot = {total}\n'
                               f'Middle man fees = {fees1}\n'
                               f'Winner pot = {fees2}\n'
-                              f'Total pot for shares = {shares}\n', parse_mode = ParseMode.HTML)
+                              f'Total pot for shares = {share}\n', parse_mode = ParseMode.HTML)
     except IndexError:
       update.message.reply_text('No competition going on right now')
       return -1 
