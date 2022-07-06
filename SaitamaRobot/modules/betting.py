@@ -104,6 +104,7 @@ def bet(update , context):
     
     update.message.reply_text(f'You bet on {bet_on} with {amount} DOR\n\n <b>waiting for admin to check and approve</b>', parse_mode=ParseMode.HTML,
                             reply_markup=reply_markup)
+    return ONE
     
 def bet2(update , context):
     global list
