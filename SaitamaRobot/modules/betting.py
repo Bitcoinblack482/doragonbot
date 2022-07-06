@@ -108,6 +108,8 @@ def bet(update , context):
     
     update.message.reply_text(f'You bet on {bet_on} with {amount} DOR\n\n <b>waiting for admin to check and approve</b>', parse_mode=ParseMode.HTML,
                             reply_markup=reply_markup)
+    
+    print('done')
     return ONE
     
 def bet2(update , context):
@@ -120,6 +122,8 @@ def bet2(update , context):
     bet_on = cd['bet_on']
     amount = cd['amount']
     name  = cd['name']
+    
+    print(update.callback_query.from_user.id)
     
     
     if update.callback_query.from_user.id not in boss:
