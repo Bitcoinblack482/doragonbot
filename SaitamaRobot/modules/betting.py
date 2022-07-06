@@ -61,14 +61,17 @@ def betboard(update , context):
      if len(c)==0:
         update.message.reply_text('No competition going on right now')
         return -1
-    
-    update.message.reply_text(f'<b>Ongoing competitions\n\n</b>'
+    try:
+     update.message.reply_text(f'<b>Ongoing competitions\n\n</b>'
                               f'<b>{c[0]}</b>\nV.s.\n'
                               f'<b>{c[1]}</b>\n\n'
                               f'Total pot = {total}\n'
                               f'Middle man fees = {fees1}\n'
                               f'Winner pot = {fees2}\n'
                               f'Total pot for shares = {shares}\n', parse_mode = ParseMode.HTML)
+    except IndexError:
+      update.message.reply_text('No competition going on right now')
+      return -1 
     
     
 def bet(update , context):
