@@ -106,11 +106,11 @@ def bet(update , context):
     keyboard = [[InlineKeyboardButton('Approve', callback_data='approve')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
-    print('done')
     update.message.reply_text(f'You bet on {bet_on} with {amount} DOR\n\n <b>waiting for admin to check and approve</b>', parse_mode=ParseMode.HTML,
                             reply_markup=reply_markup)
     
-    print('done')
+    update.message.reply_text('test')
+    
     return ONE
     
 def bet2(update , context):
@@ -118,13 +118,14 @@ def bet2(update , context):
     global total
     cd = context.chat_data
     query = update.callback_query
-    print('enter here 1')
+    
+    update.message.reply_text('test2')
     
     bet_on = cd['bet_on']
     amount = cd['amount']
     name  = cd['name']
     
-    print(update.callback_query.from_user.id)
+    update.message.reply_text(update.callback_query.from_user.id)
     
     
     if update.callback_query.from_user.id not in boss:
@@ -134,7 +135,6 @@ def bet2(update , context):
     total += amount
     d = {'user':name, 'bet_on':bet_on, 'amount':amount}
     list.append(d)
-    print('enter here 2')
     
     query.edit_message_text(f'<b>Your bet on {bet_on} with {amount} DOR has been approved</b>', parse_mode=ParseMode.HTML)
     return ConversationHandler.END
