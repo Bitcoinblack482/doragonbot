@@ -122,6 +122,9 @@ def bet2(update , context):
     bet_on = cd['bet_on']
     amount = cd['amount']
     name  = cd['name']
+    
+    print(type(amount))
+    print(amount)
 
     if update.callback_query.from_user.id not in boss:
         query.answer('Not authroised')
