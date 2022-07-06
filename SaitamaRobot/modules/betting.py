@@ -156,6 +156,9 @@ def register(update , context):
      if signal == 'off' and status ==2:
          update.message.reply_text('Registration is already off')
          return -1
+     else:
+         update.message.reply_text('No competition ongoing , create one now by using /startbet <user1> <user2>')
+         return -1
     except IndexError:
      update.message.reply_text('Please enter /register on \nor\n/register off')
      return -1
