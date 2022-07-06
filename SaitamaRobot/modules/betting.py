@@ -57,7 +57,7 @@ def betboard(update , context):
     shares = total*0.83
     
     for i in list:
-        
+     print(len(c))
      if len(c)==0:
         update.message.reply_text('No competition going on right now')
         return -1
