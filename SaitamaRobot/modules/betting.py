@@ -91,6 +91,11 @@ def bet(update , context):
         update.message.reply_text('sorry , the registration is now closed, wait for next one')
         return -1
     
+    for i in list:
+     if i['user'] == name:
+        update.message.reply_text('You already placed a bet , check with /mybet')
+        return -1
+    
     try:
     
      cd['bet_on'] = bet_on = update.message.text.split()[1]
