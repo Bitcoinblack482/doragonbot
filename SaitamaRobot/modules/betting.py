@@ -26,6 +26,7 @@ share = 0
 
 def startbet(update , context):
   global status 
+  global c 
   name = update.effective_user.name
   id = update.effective_user.id
   try:
@@ -38,6 +39,10 @@ def startbet(update , context):
   if id not in boss:
         update.message.reply_text('Not authorised')
         return -1
+    
+  if len(c) !=0:
+    c = []
+    
     
   c.append(c1)
   c.append(c2)
