@@ -16,6 +16,7 @@ ONE , TWO , THREE , FOUR , FIRST , SECOND,  *_ = range(50)
 boss = [163494588, 1610096351]
 c = []
 list = []
+status = 0
 fees1 = 0
 fees2 = 0
 total = 0
@@ -23,6 +24,7 @@ share1 = 0
 share2 = 0
 
 def startbet(update , context):
+  global status 
   name = update.effective_user.name
   id = update.effective_user.id
   try:
@@ -38,6 +40,9 @@ def startbet(update , context):
     
   c.append(c1)
   c.append(c2)
+  status +=1
+    
+  update.message.reply_text(f'Bet event created between {c1} and {c2}')
     
 def betboard(update , context):
     global list
@@ -58,8 +63,8 @@ def betboard(update , context):
         return -1
     
     update.message.reply_text(f'<b>Ongoing competitions\n\n</b>'
-                              f'<b>c[0]</b>\nVs.'
-                              f'<b>c[1]</b>\n\n'
+                              f'<b>{c[0]}</b>\nVs.'
+                              f'<b>{c[1]}</b>\n\n'
                               f'Total pot = {total}\n'
                               f'Middle man fees = {fees1}\n'
                               f'Winner pot = {fees2}\n'
@@ -67,6 +72,8 @@ def betboard(update , context):
     
     
 def bet(update , context):
+    global status 
+    # 1 is on and 2 is off
     cd = context.chat_data
     query = update.callback_query
     cd['name'] = name = update.effective_user.name
@@ -74,6 +81,10 @@ def bet(update , context):
     
     if len(c)==0:
         update.message.reply_text('No competition going on right now')
+        return -1
+    
+    if status ==2:
+        update.message.reply_text('sorry , the registration is now closed, wait for next one')
         return -1
     
     try:
@@ -114,6 +125,38 @@ def bet2(update , context):
     
     query.edit_message_text(f'<b>Your bet on {bet_on} with {amount} DOR has been approved</b>', parse_mode=ParseMode.HTML)
     return ConversationHandler.END
+
+
+def register(update , context):
+    global status
+    # 1 is on and 2 is off
+    
+    id = update.effective_user.id
+    if id not in boss:
+        update.message.reply_text('Not authorised')
+        return -1
+    
+    try: 
+     signal = update.message.text.split()[1]
+      if signal == 'on' and status ==1:
+            update.message.reply_text('Registration is already on')
+            return -1
+      if signal == 'on' and status ==2:
+            update.message.reply_text('Registration turned on')
+            status -=1
+            return -1
+      if signal == 'off' and status ==1:
+            update.message.reply_text('Registration is now off')
+            status +=1
+            return -1
+      if signal == 'off' and status ==2:
+            update.message.reply_text('Registration is already off')
+            return -1
+    except IndexError:
+     update.message.reply_text('Please enter /register on \nor\n/register off')
+     return -1
+        
+    
 
 
 def mybet(update , context):
@@ -172,6 +215,7 @@ BET_HANDLER = ConversationHandler(
     )
 
 dispatcher.add_handler(BET_HANDLER)
+dispatcher.add_handler(CommandHandler("register", register))
 dispatcher.add_handler(CommandHandler("mybet", mybet))
 dispatcher.add_handler(CommandHandler("betboard", betboard))
 
