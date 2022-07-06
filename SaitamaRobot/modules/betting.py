@@ -115,7 +115,7 @@ def bet(update , context):
                               f'currently you can bet on {c[0]}, or {c[1]}')
      return -1
     
-    keyboard = [[InlineKeyboardButton('Approve', callback_data='approve')]]
+    keyboard = [[InlineKeyboardButton('Approve', callback_data='approve'),InlineKeyboardButton('Reject', callback_data='reject')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
     update.message.reply_text(f'You bet on {bet_on} with {amount} DOR\n\n <b>waiting for admin to check and approve</b>', parse_mode=ParseMode.HTML,
@@ -251,7 +251,8 @@ def mybet(update , context):
 BET_HANDLER = ConversationHandler(
         entry_points=[CommandHandler('bet', bet, pass_user_data=True)],
         states={
-            ONE: [CallbackQueryHandler(bet2, pattern="approve", pass_user_data=True)]
+            ONE: [CallbackQueryHandler(bet2, pattern="approve", pass_user_data=True),
+                 CallbackQueryHandler(bet3, pattern="reject", pass_user_data=True)]
         },
         fallbacks=[],
         allow_reentry=True,
