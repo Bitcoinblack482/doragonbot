@@ -16,7 +16,7 @@ ONE , TWO , THREE , FOUR , FIRST , SECOND,  *_ = range(50)
 boss = [163494588, 1610096351]
 c = []
 list = []
-status = 0
+status = 1
 fees1 = 0
 fees2 = 0
 total = 0
@@ -111,6 +111,7 @@ def bet(update , context):
     
 def bet2(update , context):
     global list
+    global total
     cd = context.chat_data
     query = update.callback_query
     
