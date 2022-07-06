@@ -125,7 +125,7 @@ def bet2(update , context):
     amount = cd['amount']
     name  = cd['name']
     
-    update.message.reply_text(update.callback_query.from_user.id)
+    query.edit_message_text(update.callback_query.from_user.id)
     
     
     if update.callback_query.from_user.id not in boss:
