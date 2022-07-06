@@ -119,24 +119,20 @@ def bet2(update , context):
     cd = context.chat_data
     query = update.callback_query
     
-    query.edit_message_text('test2')
-    
     bet_on = cd['bet_on']
     amount = cd['amount']
     name  = cd['name']
-    
-    query.edit_message_text(update.callback_query.from_user.id)
-    
-    
+
     if update.callback_query.from_user.id not in boss:
         query.answer('Not authroised')
         return None
     
-    total += amount
+    total +=amount
     d = {'user':name, 'bet_on':bet_on, 'amount':amount}
     list.append(d)
     
     query.edit_message_text(f'<b>Your bet on {bet_on} with {amount} DOR has been approved</b>', parse_mode=ParseMode.HTML)
+    
     return ConversationHandler.END
 
 
