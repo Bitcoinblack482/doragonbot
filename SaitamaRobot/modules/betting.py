@@ -195,12 +195,12 @@ def mybet(update , context):
        ratio += i['amount']/share2
     
     for i in list:
-     if i['user'] == checker:
+     if i['user'] == name:
       if i['bet_on'] == c[0]:
        reward +=share*ratio
        if reward > i["amount"]*2:
         reward = i["amount"]*2
-     if i['user'] == checker:
+     if i['user'] == name:
       if i['bet_on'] == c[1]:
        reward +=share*ratio
        if reward > i["amount"]*2:
