@@ -119,7 +119,7 @@ def bet2(update , context):
     cd = context.chat_data
     query = update.callback_query
     
-    update.message.reply_text('test2')
+    query.edit_message_text('test2')
     
     bet_on = cd['bet_on']
     amount = cd['amount']
