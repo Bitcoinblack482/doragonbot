@@ -210,7 +210,7 @@ def mybet(update , context):
     
     for i in list:
         if i['user'] == name:
-            text+= f'{name}\nYour bet amount :{i["amount"]}\nYou bet on {i["bet_on"]}\n\nExpected reward if i["bet_on"] win : {reward} DOR'
+            text+= f'{name}\nYour bet amount : {i["amount"]}\nYou bet on {i["bet_on"]}\n\nExpected reward if {i["bet_on"]} win : {reward} DOR'
     if text == '': 
      update.message.reply_text('You dont have ongoing bet yet')
      return -1
