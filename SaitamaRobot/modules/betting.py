@@ -22,6 +22,7 @@ fees2 = 0
 total = 0
 share1 = 0
 share2 = 0
+share = 0
 
 def startbet(update , context):
   global status 
@@ -54,7 +55,7 @@ def betboard(update , context):
     
     fees1 = total*0.02
     fees2 = total*0.15
-    shares = total*0.83
+    share = total*0.83
     
     for i in list:
      print(len(c))
@@ -170,6 +171,7 @@ def register(update , context):
 def mybet(update , context):
     global share1
     global share2
+    global share
     cd = context.chat_data
     query = update.callback_query
     name = update.effective_user.name
@@ -191,14 +193,17 @@ def mybet(update , context):
        ratio += i['amount']/share2
     
     for i in list:
-     if i['user'] == name:
+     if i['user'] == checker:
       if i['bet_on'] == c[0]:
-        reward +=share1*ratio
-     if i['user'] == name:
+       reward +=share*ratio
+       if reward > i["amount"]*2:
+        reward = i["amount"]*2
+     if i['user'] == checker:
       if i['bet_on'] == c[1]:
-        reward +=share2*ratio
-    
-    
+       reward +=share*ratio
+       if reward > i["amount"]*2:
+        reward = i["amount"]*2
+        
     text = ''
     
     for i in list:
