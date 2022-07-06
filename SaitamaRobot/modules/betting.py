@@ -138,20 +138,20 @@ def register(update , context):
     
     try: 
      signal = update.message.text.split()[1]
-      if signal == 'on' and status ==1:
-            update.message.reply_text('Registration is already on')
-            return -1
-      if signal == 'on' and status ==2:
-            update.message.reply_text('Registration turned on')
-            status -=1
-            return -1
-      if signal == 'off' and status ==1:
-            update.message.reply_text('Registration is now off')
-            status +=1
-            return -1
-      if signal == 'off' and status ==2:
-            update.message.reply_text('Registration is already off')
-            return -1
+     if signal == 'on' and status ==1:
+         update.message.reply_text('Registration is already on')
+         return -1
+     if signal == 'on' and status ==2:
+         update.message.reply_text('Registration turned on')
+         status -=1
+         return -1
+     if signal == 'off' and status ==1:
+         update.message.reply_text('Registration is now off')
+         status +=1
+         return -1
+     if signal == 'off' and status ==2:
+         update.message.reply_text('Registration is already off')
+         return -1
     except IndexError:
      update.message.reply_text('Please enter /register on \nor\n/register off')
      return -1
