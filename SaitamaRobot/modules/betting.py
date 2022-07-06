@@ -63,7 +63,7 @@ def betboard(update , context):
         return -1
     
     update.message.reply_text(f'<b>Ongoing competitions\n\n</b>'
-                              f'<b>{c[0]}</b>\nVs.'
+                              f'<b>{c[0]}</b>\nV.s.\n'
                               f'<b>{c[1]}</b>\n\n'
                               f'Total pot = {total}\n'
                               f'Middle man fees = {fees1}\n'
