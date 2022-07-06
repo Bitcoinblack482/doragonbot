@@ -201,6 +201,9 @@ def mybet(update , context):
     global share1
     global share2
     global share
+    print(share1)
+    print(share2)
+    print(share)
     cd = context.chat_data
     query = update.callback_query
     name = update.effective_user.name
@@ -232,6 +235,8 @@ def mybet(update , context):
        reward +=share*ratio
        if reward > i["amount"]*2:
         reward = i["amount"]*2
+        
+    print(ratio)
         
     text = ''
     
