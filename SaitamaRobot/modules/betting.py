@@ -108,8 +108,7 @@ def bet(update , context):
     
     update.message.reply_text(f'You bet on {bet_on} with {amount} DOR\n\n <b>waiting for admin to check and approve</b>', parse_mode=ParseMode.HTML,
                             reply_markup=reply_markup)
-    
-    update.message.reply_text('test')
+  
     
     return ONE
     
@@ -124,6 +123,7 @@ def bet2(update , context):
     name  = cd['name']
     
     amount  = int(amount)
+    by = update.callback_query.from_user.first_name
 
     if update.callback_query.from_user.id not in boss:
         query.answer('Not authroised')
@@ -133,7 +133,7 @@ def bet2(update , context):
     d = {'user':name, 'bet_on':bet_on, 'amount':amount}
     list.append(d)
     
-    query.edit_message_text(f'<b>Your bet on {bet_on} with {amount} DOR has been approved</b>', parse_mode=ParseMode.HTML)
+    query.edit_message_text(f'<b>Your bet on {bet_on} with {amount} DOR has been approved by {by}</b>', parse_mode=ParseMode.HTML)
     
     return ConversationHandler.END
 
