@@ -83,8 +83,10 @@ def betboard(update , context):
     
     
 def bet(update , context):
-    global status 
-    # 1 is on and 2 is off
+    global status # 1 is on and 2 is off
+    global share1
+    global share2
+    
     cd = context.chat_data
     query = update.callback_query
     cd['name'] = name = update.effective_user.name
@@ -114,6 +116,12 @@ def bet(update , context):
      update.message.reply_text(f'use it like this /bet <bet on who> <amount>\n\n'
                               f'currently you can bet on {c[0]}, or {c[1]}')
      return -1
+    
+    for i in list:
+     if i['bet_on'] == c[0]:
+      share1 += i['amount']
+     if i['bet_on'] == c[1]:
+      share2 += i['amount']
     
     keyboard = [[InlineKeyboardButton('Approve', callback_data='approve'),InlineKeyboardButton('Reject', callback_data='reject')]]
     reply_markup = InlineKeyboardMarkup(keyboard)
